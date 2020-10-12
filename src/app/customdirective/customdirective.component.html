@@ -1,0 +1,13 @@
+<app-header></app-header>
+
+<div [formGroup]="orderForm" style="margin-left: 12px;margin-top: 10px;">
+  <div formArrayName="items" *ngFor="let item of orderForm.get('items')['controls']; let i = index;">
+    <div [formGroupName]="i">
+      <input appUppercase formControlName="name" placeholder="First Name">
+    </div>
+
+  </div>
+</div>
+<div>
+<button  style="margin-left: 12px;margin-top: 12px;" (click)="addItem()">Add</button>
+</div>

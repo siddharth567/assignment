@@ -1,0 +1,106 @@
+<app-header></app-header>
+
+<div class="card m-3">
+  <h5 class="card-header">Register Form </h5>
+  <div class="card-body">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+
+        <!--First Name-->
+        <div class="form-group col-6">
+          <label>First Name</label>
+          <input type="text"  formControlName="firstName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+          <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+            <div *ngIf="f.firstName.errors.required">First Name is required</div>
+          </div>
+        </div>
+
+        <!--Last Name-->
+        <div class="form-group col-6">
+          <label>Last Name</label>
+          <input type="text"  formControlName="lastName" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+          <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+            <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="form-row">
+        <!--Gendor-->
+        <div class="form-group col-6">
+          <label>Gender</label>
+          <select formControlName="gendor" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.gendor.errors }">
+            <option value="">Please Select</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+          <div *ngIf="submitted && f.gendor.errors" class="invalid-feedback">
+            <div *ngIf="f.gendor.errors.required">Gender is required</div>
+          </div>
+        </div>
+
+        <!--Phone Number-->
+        <div class="form-group col-6">
+          <label>Phone Number(optional)</label>
+          <input type="text" formControlName="phonenumber" minlength="10" maxlength="10" class="form-control" />
+        </div>
+
+      </div>
+
+
+      <div class="form-row">
+
+        <!--Email-->
+        <div class="form-group col-6">
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName="email" placeholder="Email"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+          <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div *ngIf="f.email.errors.required">User Email is required</div>
+            <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
+        </div>
+
+        <!--Account No-->
+        <div class="form-group col-6">
+          <label>Account No</label>
+          <input type="number" formControlName="accountno" min="1" step="1" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.accountno.errors }" />
+          <div *ngIf="submitted && f.accountno.errors" class="invalid-feedback">
+            <div *ngIf="f.accountno.errors.required">Account No is required</div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="form-row">
+
+        <!--Ifsc Code-->
+        <div class="form-group col-6">
+          <label>Ifsc Code</label>
+          <input type="text" formControlName="ifsccode" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.ifsccode.errors }" />
+          <div *ngIf="submitted && f.ifsccode.errors" class="invalid-feedback">
+            <div *ngIf="f.ifsccode.errors.required">First Name is required</div>
+          </div>
+        </div>
+
+        <!--Notes-->
+        <div class="form-group col-6">
+          <label>Notes</label>
+          <input type="text" formControlName="notes" class="form-control" />
+        </div>
+      </div>
+
+      <div class="text-center">
+        <button class="btn btn-primary mr-1">Register</button>
+      </div>
+    </form>
+  </div>
+</div>

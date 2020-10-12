@@ -1,0 +1,78 @@
+<app-header></app-header>
+
+
+<div style="margin-left:25px; margin-top: 15px;">
+<input type="text" name="branch" style="margin-left: 5px;" placeholder="branch" (input)="filterbranch($event)">
+<input type="text" name="address"style="margin-left: 5px;" placeholder="address" (input)="filteraddress($event)">
+</div>
+
+
+
+<div class="row" style="margin-top:12px;margin-left:8px">
+  <div class="col-md-3 select-outline">
+    <select class="custom-select custom-select-sm" (change)="selecteCity($event)">
+      <option value="DELHI" selected>DELHI</option>
+      <option value="MUMBAI">MUMBAI</option>
+      <option value="GURGAON">GURGAON</option>
+      <option value="PUNE">PUNE</option>
+    </select>
+  </div>
+</div>
+
+
+<div class="scrollmenu mt-3 table-wrapper-scroll-y my-custom-scrollbar">
+  <table class="table" style="margin-top:2%;">
+
+    <!--Table Heading-->
+    <thead>
+
+      <tr>
+        <th>Bank_Id</th>
+         <th>Address</th>
+        <th>Bank_name</th>
+        <th>Branch</th>
+        <th>City</th>
+        <th>District</th>
+        <th>Ifsc</th>
+        <th>State</th>
+        <th>Action</th>
+      </tr>
+
+    </thead>
+
+    <!--Table body-->
+    <tbody>
+
+      <tr
+        *ngFor="let item of filteredData | paginate:{id:'listing_pagination', itemsPerPage: 10, currentPage: p, totalItems: totalRecords}">
+        <th scope="row">{{item.bank_id}}</th>
+        <td>{{item.address}}</td> 
+        <td>{{item.bank_name}}</td>
+        <td>{{item.branch}}</td>
+        <td>{{item.city}}</td>
+        <td>{{item.district}}</td>
+        <td>{{item.ifsc}}</td>
+        <td>{{item.state}}</td>
+        <td><button type="button" class="button" (click)="onSubmit(item)">Submit</button></td>
+
+      </tr>
+
+  <!--Loader-->
+  <div id="preloader" *ngIf="loader">
+    <div id="loader"></div>
+  </div>
+
+    </tbody>
+  </table>
+  <pagination-controls id="listing_pagination" maxSize="10" directionLinks="true" (pageChange)="p=$event">
+  </pagination-controls>
+</div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="form-group">
+    <div class="input-group" *ngFor="let key of itemKeys">
+
+      {{key}} {{bankitem[key]}}
+    </div>
+  </div>
+</ng-template>

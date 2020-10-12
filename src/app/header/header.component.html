@@ -1,0 +1,16 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Revinfotech</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a routerLinkActive="active" routerLink="/list" (click)="list()">List <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item"style="margin-left:5px">
+            <a routerLinkActive="active" routerLink="/directive" (click)="directiveMethod()">CustomDirective</a>
+          </li>
+      </ul>
+    </div>
+  </nav>
